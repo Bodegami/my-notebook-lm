@@ -69,11 +69,11 @@
 
 ## 8. Phase 8 — Frontend Foundation
 
-- [ ] 8.1 (T034) Initialize Next.js 14 project in `frontend/` (TypeScript, Tailwind, App Router, `src/` dir); install shadcn/ui components (`button`, `badge`, `popover`, `collapsible`, `scroll-area`, `tooltip`, `separator`, `skeleton`); install Framer Motion, React Hook Form + Zod
-- [ ] 8.2 (T035) Create `frontend/src/types/document.ts` (`Document`, `DocumentStatus`) and `frontend/src/types/chat.ts` (`Citation`, `ChatMessage`, `SSEEvent`, `SSEEventType`)
-- [ ] 8.3 (T036) Create `frontend/src/lib/api.ts`: typed fetch wrappers for all backend endpoints including `streamChat()` with SSE parsing and `AbortSignal` support
-- [ ] 8.4 (T037) Create hooks: `useSession.ts` (UUID from `sessionStorage`), `useDocuments.ts` (load + poll + upload + delete + clearAll), `useChat.ts` (SSE streaming, `AbortController`, status state)
-- [ ] 8.5 Commit Phase 8: "feat: Next.js frontend foundation — types, API client, and custom hooks"
+- [x] 8.1 (T034) Initialize Next.js 14 project in `frontend/` (TypeScript, Tailwind, App Router, `src/` dir); install shadcn/ui components (`button`, `badge`, `popover`, `collapsible`, `scroll-area`, `tooltip`, `separator`, `skeleton`); install Framer Motion, React Hook Form + Zod
+- [x] 8.2 (T035) Create `frontend/src/types/document.ts` (`Document`, `DocumentStatus`) and `frontend/src/types/chat.ts` (`Citation`, `ChatMessage`, `SSEEvent`, `SSEEventType`)
+- [x] 8.3 (T036) Create `frontend/src/lib/api.ts`: typed fetch wrappers for all backend endpoints including `streamChat()` with SSE parsing and `AbortSignal` support
+- [x] 8.4 (T037) Create hooks: `useSession.ts` (UUID from `sessionStorage`), `useDocuments.ts` (load + poll + upload + delete + clearAll), `useChat.ts` (SSE streaming, `AbortController`, status state)
+- [x] 8.5 Commit Phase 8: "feat: Next.js frontend foundation — types, API client, and custom hooks"
 
 ## 9. Phase 9 — Frontend Components
 
