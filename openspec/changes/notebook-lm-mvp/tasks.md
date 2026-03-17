@@ -35,11 +35,11 @@
 
 ## 4. Phase 4 — Vector Store & Embeddings (TDD)
 
-- [ ] 4.1 (T016) Implement `backend/app/services/vector_store.py` (Part 1): `QdrantClient` init, `initialize_collection()` (768-dim, Cosine, sparse vectors), `delete_points_by_document_id()`, `clear_collection()`
-- [ ] 4.2 (T017) Implement `backend/app/services/embedder.py`: singleton `EmbeddingService` with `fastembed.TextEmbedding("nomic-embed-text")`, `embed_texts()` batch, `embed_query()` single
-- [ ] 4.3 (T018) Add `index_chunks()` to `vector_store.py`: batch embed child texts, build `PointStruct` with dense vectors + full payload (parent_text, metadata), upload in batches of 100, return Qdrant UUIDs
-- [ ] 4.4 (T019) Add `search()` to `vector_store.py`: dense cosine search + sparse BM25 search, RRF fusion, return top-K `SearchResult` objects
-- [ ] 4.5 Commit Phase 4: "feat: Qdrant vector store with hybrid search (dense+BM25+RRF) and FastEmbed embeddings"
+- [x] 4.1 (T016) Implement `backend/app/services/vector_store.py` (Part 1): `QdrantClient` init, `initialize_collection()` (768-dim, Cosine, sparse vectors), `delete_points_by_document_id()`, `clear_collection()`
+- [x] 4.2 (T017) Implement `backend/app/services/embedder.py`: singleton `EmbeddingService` with `fastembed.TextEmbedding("nomic-embed-text")`, `embed_texts()` batch, `embed_query()` single
+- [x] 4.3 (T018) Add `index_chunks()` to `vector_store.py`: batch embed child texts, build `PointStruct` with dense vectors + full payload (parent_text, metadata), upload in batches of 100, return Qdrant UUIDs
+- [x] 4.4 (T019) Add `search()` to `vector_store.py`: dense cosine search + sparse BM25 search, RRF fusion, return top-K `SearchResult` objects
+- [x] 4.5 Commit Phase 4: "feat: Qdrant vector store with hybrid search (dense+BM25+RRF) and FastEmbed embeddings"
 
 ## 5. Phase 5 — Ingestion Pipeline & Document API
 
