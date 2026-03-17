@@ -9,23 +9,23 @@
 
 ## 1. Phase 1 — Backend Foundation
 
-- [ ] 1.1 (T006) Create `backend/app/main.py`: FastAPI app with lifespan (DB init, Qdrant verify, Ollama verify), CORS for `localhost:3000`, router registration, global exception handler
-- [ ] 1.2 (T007) Create `backend/app/models/document.py` (SQLModel `Document` table) and `backend/app/database.py` (engine, `create_db_and_tables()`, `get_session()`)
-- [ ] 1.3 (T008) Create `backend/app/schemas/document.py` (`DocumentResponse`, `DocumentListResponse`, `UploadResponse`) and `backend/app/schemas/chat.py` (`ChatRequest`, `Citation`, `SSEEvent`)
-- [ ] 1.4 (T009) Create `backend/app/routers/health.py`: async `GET /api/health` using `httpx.AsyncClient` checking Qdrant and Ollama; return structured health status
-- [ ] 1.5 Write unit tests for API schemas (`tests/backend/unit/test_schemas.py`): validate `DocumentResponse`, `ChatRequest`, `Citation` with null fields
-- [ ] 1.6 Commit Phase 1: "feat: FastAPI app skeleton, SQLModel schema, Pydantic schemas, and health endpoint"
+- [x] 1.1 (T006) Create `backend/app/main.py`: FastAPI app with lifespan (DB init, Qdrant verify, Ollama verify), CORS for `localhost:3000`, router registration, global exception handler
+- [x] 1.2 (T007) Create `backend/app/models/document.py` (SQLModel `Document` table) and `backend/app/database.py` (engine, `create_db_and_tables()`, `get_session()`)
+- [x] 1.3 (T008) Create `backend/app/schemas/document.py` (`DocumentResponse`, `DocumentListResponse`, `UploadResponse`) and `backend/app/schemas/chat.py` (`ChatRequest`, `Citation`, `SSEEvent`)
+- [x] 1.4 (T009) Create `backend/app/routers/health.py`: async `GET /api/health` using `httpx.AsyncClient` checking Qdrant and Ollama; return structured health status
+- [x] 1.5 Write unit tests for API schemas (`tests/backend/unit/test_schemas.py`): validate `DocumentResponse`, `ChatRequest`, `Citation` with null fields
+- [x] 1.6 Commit Phase 1: "feat: FastAPI app skeleton, SQLModel schema, Pydantic schemas, and health endpoint"
 
 ## 2. Phase 2 — Document Extractors (TDD)
 
-- [ ] 2.1 (T010) Write failing tests for PDF extractor → implement `backend/app/services/extractors/base.py` (abstract interfaces) and `extractors/pdf.py` (`pypdf`, page-number metadata, scanned-PDF detection)
-- [ ] 2.2 (T011) Write failing tests for EPUB extractor → implement `extractors/epub.py` (`ebooklib` + `beautifulsoup4`, section headings from `<h1>`/`<h2>`)
-- [ ] 2.3 (T012) Write failing tests for DOCX extractor → implement `extractors/docx.py` (`python-docx`, heading tracking, `antiword` fallback for `.doc`)
-- [ ] 2.4 (T013) Write failing tests for Markdown/TXT extractor → implement `extractors/markdown.py` (heading-boundary splitting for `.md`, fixed-size blocks for `.txt`)
-- [ ] 2.5 (T014) Implement `extractors/factory.py` (`ExtractorFactory` mapping extensions to extractors, `UnsupportedFormatError`) and `extractors/__init__.py`
-- [ ] 2.6 Add fixture files to `tests/fixtures/`: `sample.pdf`, `sample.epub`, `sample.docx`, `sample.md`, `sample.txt`
-- [ ] 2.7 Ensure all extractor unit tests pass (`tests/backend/unit/test_extractors.py`)
-- [ ] 2.8 Commit Phase 2: "feat: document extractors (PDF, EPUB, DOCX, MD, TXT) with TDD"
+- [x] 2.1 (T010) Write failing tests for PDF extractor → implement `backend/app/services/extractors/base.py` (abstract interfaces) and `extractors/pdf.py` (`pypdf`, page-number metadata, scanned-PDF detection)
+- [x] 2.2 (T011) Write failing tests for EPUB extractor → implement `extractors/epub.py` (`ebooklib` + `beautifulsoup4`, section headings from `<h1>`/`<h2>`)
+- [x] 2.3 (T012) Write failing tests for DOCX extractor → implement `extractors/docx.py` (`python-docx`, heading tracking, `antiword` fallback for `.doc`)
+- [x] 2.4 (T013) Write failing tests for Markdown/TXT extractor → implement `extractors/markdown.py` (heading-boundary splitting for `.md`, fixed-size blocks for `.txt`)
+- [x] 2.5 (T014) Implement `extractors/factory.py` (`ExtractorFactory` mapping extensions to extractors, `UnsupportedFormatError`) and `extractors/__init__.py`
+- [x] 2.6 Add fixture files to `tests/fixtures/`: `sample.pdf`, `sample.epub`, `sample.docx`, `sample.md`, `sample.txt`
+- [x] 2.7 Ensure all extractor unit tests pass (`tests/backend/unit/test_extractors.py`)
+- [x] 2.8 Commit Phase 2: "feat: document extractors (PDF, EPUB, DOCX, MD, TXT) with TDD"
 
 ## 3. Phase 3 — Chunking Service (TDD)
 
