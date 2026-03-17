@@ -1,0 +1,79 @@
+version: "3.9"
+
+networks:
+  rag_network:
+    driver: bridge
+
+volumes:
+  ollama_data:
+  qdrant_data:
+  backend_uploads:
+  backend_db:
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: rag_ollama
+    restart: unless-stopped
+    networks:
+      - rag_network
+    volumes:
+      - ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_NUM_GPU=${OLLAMA_NUM_GPU:-1}
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    entrypoint: >
+      sh -c "ollama serve &
+             sleep 10 &&
+             ollama pull ${LLM_MODEL:-phi3.5:mini-instruct} &&
+             ollama pull ${EMBED_MODEL:-nomic-embed-text} &&
+             wait"
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: rag_qdrant
+    restart: unless-stopped
+    networks:
+      - rag_network
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: rag_backend
+    restart: unless-stopped
+    networks:
+      - rag_network
+    ports:
+      - "8000:8000"
+    volumes:
+      - backend_uploads:/app/uploads
+      - backend_db:/app/data
+    env_file:
+      - .env
+    depends_on:
+      - qdrant
+      - ollama
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: rag_frontend
+    restart: unless-stopped
+    networks:
+      - rag_network
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    depends_on:
+      - backend
