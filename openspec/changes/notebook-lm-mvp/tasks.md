@@ -29,9 +29,9 @@
 
 ## 3. Phase 3 — Chunking Service (TDD)
 
-- [ ] 3.1 (T015) Write failing tests for chunker → implement `backend/app/services/chunker.py` with parent-document strategy (child ~300 tokens + 50 overlap, parent ~1000 tokens, `ChunkRecord` dataclass)
-- [ ] 3.2 Ensure chunker unit tests pass (`tests/backend/unit/test_chunker.py`): verify chunk size bounds, parent-child linkage, metadata propagation, no text loss
-- [ ] 3.3 Commit Phase 3: "feat: parent-document chunking service with TDD"
+- [x] 3.1 (T015) Write failing tests for chunker → implement `backend/app/services/chunker.py` with parent-document strategy (child ~300 tokens + 50 overlap, parent ~1000 tokens, `ChunkRecord` dataclass)
+- [x] 3.2 Ensure chunker unit tests pass (`tests/backend/unit/test_chunker.py`): verify chunk size bounds, parent-child linkage, metadata propagation, no text loss
+- [x] 3.3 Commit Phase 3: "feat: parent-document chunking service with TDD"
 
 ## 4. Phase 4 — Vector Store & Embeddings (TDD)
 
