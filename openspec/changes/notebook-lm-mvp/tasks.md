@@ -43,19 +43,19 @@
 
 ## 5. Phase 5 — Ingestion Pipeline & Document API
 
-- [ ] 5.1 (T020) Implement `backend/app/services/ingestion.py`: async `ingest_document()` pipeline (extract → chunk → embed → index) with SQLite status updates at each step; runs as FastAPI `BackgroundTask`
-- [ ] 5.2 (T021) Implement `POST /api/documents/upload` in `routers/documents.py`: multipart upload, extension + size validation, save to `UPLOAD_DIR`, create SQLite record, schedule background task
-- [ ] 5.3 (T022) Add `GET /api/documents` and `GET /api/documents/{id}` routes to `routers/documents.py`
-- [ ] 5.4 (T023) Add `DELETE /api/documents/{id}` route: delete Qdrant vectors + disk file + SQLite record
-- [ ] 5.5 (T024) Add `DELETE /api/documents` route (Clear All): `clear_collection()` + delete all files + delete all SQLite records
-- [ ] 5.6 Commit Phase 5: "feat: async ingestion pipeline and full document CRUD API"
+- [x] 5.1 (T020) Implement `backend/app/services/ingestion.py`: async `ingest_document()` pipeline (extract → chunk → embed → index) with SQLite status updates at each step; runs as FastAPI `BackgroundTask`
+- [x] 5.2 (T021) Implement `POST /api/documents/upload` in `routers/documents.py`: multipart upload, extension + size validation, save to `UPLOAD_DIR`, create SQLite record, schedule background task
+- [x] 5.3 (T022) Add `GET /api/documents` and `GET /api/documents/{id}` routes to `routers/documents.py`
+- [x] 5.4 (T023) Add `DELETE /api/documents/{id}` route: delete Qdrant vectors + disk file + SQLite record
+- [x] 5.5 (T024) Add `DELETE /api/documents` route (Clear All): `clear_collection()` + delete all files + delete all SQLite records
+- [x] 5.6 Commit Phase 5: "feat: async ingestion pipeline and full document CRUD API"
 
 ## 6. Phase 6 — LLM Integration
 
-- [ ] 6.1 (T025) Implement `backend/app/services/ollama_client.py`: async `httpx` client, `check_health()`, `is_model_available()`, `stream_chat()` (NDJSON streaming)
-- [ ] 6.2 (T026) Create `backend/app/agent/prompts.py`: `SYSTEM_PROMPT` with mandatory citation rules + JSON sources block; `build_context_block()` function
-- [ ] 6.3 (T027) Create `backend/app/agent/state.py`: `AgentState` TypedDict with `session_id`, `messages`, `current_query`, `rewritten_query`, `retrieved_chunks`, `retry_count`, `is_trivial`, `final_response`, `citations`
-- [ ] 6.4 Commit Phase 6: "feat: Ollama client, system prompt with citation rules, and agent state"
+- [x] 6.1 (T025) Implement `backend/app/services/ollama_client.py`: async `httpx` client, `check_health()`, `is_model_available()`, `stream_chat()` (NDJSON streaming)
+- [x] 6.2 (T026) Create `backend/app/agent/prompts.py`: `SYSTEM_PROMPT` with mandatory citation rules + JSON sources block; `build_context_block()` function
+- [x] 6.3 (T027) Create `backend/app/agent/state.py`: `AgentState` TypedDict with `session_id`, `messages`, `current_query`, `rewritten_query`, `retrieved_chunks`, `retry_count`, `is_trivial`, `final_response`, `citations`
+- [x] 6.4 Commit Phase 6: "feat: Ollama client, system prompt with citation rules, and agent state"
 
 ## 7. Phase 7 — LangGraph Agent (TDD)
 
