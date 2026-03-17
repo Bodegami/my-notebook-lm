@@ -77,16 +77,16 @@
 
 ## 9. Phase 9 — Frontend Components
 
-- [ ] 9.1 (T038) Implement `ModelStatusIndicator.tsx`: polls `GET /api/health` every 5s, yellow/green/red badge, error banner when Ollama unreachable
-- [ ] 9.2 (T039) Implement `UploadZone.tsx`: HTML5 drag-and-drop, file list preview, React Hook Form + Zod validation, per-file progress bar with step labels
-- [ ] 9.3 (T040) Implement `DocumentSidebar.tsx`: document list with format icons, status badges (spinner for processing), delete button with `AlertDialog`, "Clear All" confirmation, "+ Upload Books" button
-- [ ] 9.4 (T041) Implement `CitationBadge.tsx` (inline `[n]` badge with Radix Popover trigger) and `SourcePopover.tsx` (filename, page/section, verbatim excerpt blockquote)
-- [ ] 9.5 (T042) Implement `SourcesPanel.tsx`: collapsible "Sources Consulted (n)" with Framer Motion chevron animation, numbered citation list with 120-char excerpt snippets
-- [ ] 9.6 (T043) Implement `MessageBubble.tsx`: user/assistant bubbles, Markdown via `react-markdown`, inline `[n]` → `CitationBadge` parsing, `SourcesPanel` below agent messages, blinking cursor during streaming
-- [ ] 9.7 (T044) Implement `AgentStatusBar.tsx`: Framer Motion fade between status strings ("Searching documents...", "Analyzing excerpts...", "Generating response..."), hidden when streaming complete
-- [ ] 9.8 (T045) Implement `ChatInput.tsx` (auto-resize textarea, Enter to send, Shift+Enter for newline, disabled states with tooltip) and `StopButton.tsx` (red, replaces Send during streaming)
-- [ ] 9.9 (T046) Implement `ChatThread.tsx`: scrollable `MessageBubble` list, auto-scroll to bottom, empty states ("Upload books..." / "Ask anything..."), `AgentStatusBar` during streaming
-- [ ] 9.10 Commit Phase 9: "feat: all UI components — sidebar, upload zone, chat thread, citation badges, source panel"
+- [x] 9.1 (T038) Implement `ModelStatusIndicator.tsx`: polls `GET /api/health` every 5s, yellow/green/red badge, error banner when Ollama unreachable
+- [x] 9.2 (T039) Implement `UploadZone.tsx`: HTML5 drag-and-drop, file list preview, React Hook Form + Zod validation, per-file progress bar with step labels
+- [x] 9.3 (T040) Implement `DocumentSidebar.tsx`: document list with format icons, status badges (spinner for processing), delete button with `AlertDialog`, "Clear All" confirmation, "+ Upload Books" button
+- [x] 9.4 (T041) Implement `CitationBadge.tsx` (inline `[n]` badge with Radix Popover trigger) and `SourcePopover.tsx` (filename, page/section, verbatim excerpt blockquote)
+- [x] 9.5 (T042) Implement `SourcesPanel.tsx`: collapsible "Sources Consulted (n)" with Framer Motion chevron animation, numbered citation list with 120-char excerpt snippets
+- [x] 9.6 (T043) Implement `MessageBubble.tsx`: user/assistant bubbles, Markdown via `react-markdown`, inline `[n]` → `CitationBadge` parsing, `SourcesPanel` below agent messages, blinking cursor during streaming
+- [x] 9.7 (T044) Implement `AgentStatusBar.tsx`: Framer Motion fade between status strings ("Searching documents...", "Analyzing excerpts...", "Generating response..."), hidden when streaming complete
+- [x] 9.8 (T045) Implement `ChatInput.tsx` (auto-resize textarea, Enter to send, Shift+Enter for newline, disabled states with tooltip) and `StopButton.tsx` (red, replaces Send during streaming)
+- [x] 9.9 (T046) Implement `ChatThread.tsx`: scrollable `MessageBubble` list, auto-scroll to bottom, empty states ("Upload books..." / "Ask anything..."), `AgentStatusBar` during streaming
+- [x] 9.10 Commit Phase 9: "feat: all UI components — sidebar, upload zone, chat thread, citation badges, source panel"
 
 ## 10. Phase 10 — Frontend Page Assembly & Integration
 
