@@ -59,13 +59,13 @@
 
 ## 7. Phase 7 — LangGraph Agent (TDD)
 
-- [ ] 7.1 (T028) Write failing test for classifier → implement `classify_query()` node in `backend/app/agent/nodes.py`: LLM classification (TRIVIAL/DOCUMENT), sets `is_trivial`
-- [ ] 7.2 (T029) Write failing test for retriever → implement `retrieve_context()` node: calls `vector_store.search()`, sets `retrieved_chunks`
-- [ ] 7.3 (T030) Write failing test for evaluator/rewriter → implement `evaluate_context()` and `rewrite_query()` nodes: score threshold check, retry counter, query rewrite via LLM
-- [ ] 7.4 (T031) Write failing test for generator → implement `generate_response()` and `direct_reply()` nodes: builds prompt with context, calls `ollama_client.stream_chat()`, parses `sources` JSON block
-- [ ] 7.5 (T032) Assemble `backend/app/agent/graph.py`: `StateGraph` with all nodes and conditional edges (classifier → direct_reply|retriever → evaluator → generator|rewriter loop); compile and export singleton
-- [ ] 7.6 (T033) Create `backend/app/routers/chat.py`: `POST /api/chat/stream` SSE endpoint using `StreamingResponse`; in-memory session dict; `astream_events` for token-by-token streaming; status events sequence
-- [ ] 7.7 Commit Phase 7: "feat: LangGraph ReAct agent with classifier, retriever, evaluator, rewriter, generator nodes and SSE chat endpoint"
+- [x] 7.1 (T028) Write failing test for classifier → implement `classify_query()` node in `backend/app/agent/nodes.py`: LLM classification (TRIVIAL/DOCUMENT), sets `is_trivial`
+- [x] 7.2 (T029) Write failing test for retriever → implement `retrieve_context()` node: calls `vector_store.search()`, sets `retrieved_chunks`
+- [x] 7.3 (T030) Write failing test for evaluator/rewriter → implement `evaluate_context()` and `rewrite_query()` nodes: score threshold check, retry counter, query rewrite via LLM
+- [x] 7.4 (T031) Write failing test for generator → implement `generate_response()` and `direct_reply()` nodes: builds prompt with context, calls `ollama_client.stream_chat()`, parses `sources` JSON block
+- [x] 7.5 (T032) Assemble `backend/app/agent/graph.py`: `StateGraph` with all nodes and conditional edges (classifier → direct_reply|retriever → evaluator → generator|rewriter loop); compile and export singleton
+- [x] 7.6 (T033) Create `backend/app/routers/chat.py`: `POST /api/chat/stream` SSE endpoint using `StreamingResponse`; in-memory session dict; `astream_events` for token-by-token streaming; status events sequence
+- [x] 7.7 Commit Phase 7: "feat: LangGraph ReAct agent with classifier, retriever, evaluator, rewriter, generator nodes and SSE chat endpoint"
 
 ## 8. Phase 8 — Frontend Foundation
 
