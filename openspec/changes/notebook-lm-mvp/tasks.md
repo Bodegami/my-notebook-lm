@@ -90,12 +90,12 @@
 
 ## 10. Phase 10 — Frontend Page Assembly & Integration
 
-- [ ] 10.1 (T047) Create `frontend/src/app/page.tsx`: two-column layout (280px sidebar + flex chat panel), wire `useSession()`, `useDocuments()`, `useChat()` hooks, `ModelStatusIndicator` in header
-- [ ] 10.2 (T047) Create/update `frontend/src/app/layout.tsx`: root layout with `<html lang="en">`, global font (Geist or Inter), system `prefers-color-scheme` support
-- [ ] 10.3 (T048) Wire `useChat` to real SSE backend: parse `status`/`token`/`citation`/`done`/`error` events, `AbortController` stop, error toast on failure
-- [ ] 10.4 (T049) Wire `useDocuments` to real backend: mount load + 2s polling while non-terminal, upload → re-trigger poll, delete and clear all wired
-- [ ] 10.5 (T050) Wire `ModelStatusIndicator` to real health endpoint; disable chat input when Ollama not ready; loading skeleton in sidebar during initial fetch
-- [ ] 10.6 Commit Phase 10: "feat: main page layout and full frontend-backend integration (SSE chat, document management, health status)"
+- [x] 10.1 (T047) Create `frontend/src/app/page.tsx`: two-column layout (280px sidebar + flex chat panel), wire `useSession()`, `useDocuments()`, `useChat()` hooks, `ModelStatusIndicator` in header
+- [x] 10.2 (T047) Create/update `frontend/src/app/layout.tsx`: root layout with `<html lang="en">`, global font (Geist or Inter), system `prefers-color-scheme` support
+- [x] 10.3 (T048) Wire `useChat` to real SSE backend: parse `status`/`token`/`citation`/`done`/`error` events, `AbortController` stop, error toast on failure
+- [x] 10.4 (T049) Wire `useDocuments` to real backend: mount load + 2s polling while non-terminal, upload → re-trigger poll, delete and clear all wired
+- [x] 10.5 (T050) Wire `ModelStatusIndicator` to real health endpoint; disable chat input when Ollama not ready; loading skeleton in sidebar during initial fetch
+- [x] 10.6 Commit Phase 10: "feat: main page layout and full frontend-backend integration (SSE chat, document management, health status)"
 
 ## 11. Phase 11 — Integration Testing
 
