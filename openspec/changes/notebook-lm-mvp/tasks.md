@@ -99,15 +99,15 @@
 
 ## 11. Phase 11 — Integration Testing
 
-- [ ] 11.1 (T054) Create `tests/backend/integration/test_ingestion_pipeline.py`: upload `sample.pdf` → poll until `indexed` → verify `chunk_count` → check Qdrant vectors → delete → verify vectors gone
-- [ ] 11.2 (T055) Create `tests/backend/integration/test_chat_endpoint.py`: trivial message (no citations) → document question (status+token+citation+done events) → out-of-scope question ("could not find information")
-- [ ] 11.3 Run integration tests against running Docker stack; all tests must pass
-- [ ] 11.4 Commit Phase 11: "test: integration tests for ingestion pipeline and SSE chat endpoint"
+- [x] 11.1 (T054) Create `tests/backend/integration/test_ingestion_pipeline.py`: upload `sample.pdf` → poll until `indexed` → verify `chunk_count` → check Qdrant vectors → delete → verify vectors gone
+- [x] 11.2 (T055) Create `tests/backend/integration/test_chat_endpoint.py`: trivial message (no citations) → document question (status+token+citation+done events) → out-of-scope question ("could not find information")
+- [x] 11.3 Run integration tests against running Docker stack; all tests must pass
+- [x] 11.4 Commit Phase 11: "test: integration tests for ingestion pipeline and SSE chat endpoint"
 
 ## 12. Phase 12 — Error Handling, Polish & Documentation
 
-- [ ] 12.1 (T056) Backend: HTTP 422 for unsupported format, HTTP 413 for oversized files, HTTP 503 SSE error event when Ollama unreachable
-- [ ] 12.2 (T056) Frontend: toast on upload failure (format, size, server error), toast on chat error, "Backend unavailable" banner, chat disabled with tooltip when 0 documents indexed
-- [ ] 12.3 (T057) Create `tests/frontend/components/MessageBubble.test.tsx` with `@testing-library/react`: user bubble alignment, Markdown rendering, citation badge click → popover, `SourcesPanel` count, streaming cursor
-- [ ] 12.4 (T058) Create `README.md`: what it is, requirements, first-time setup, session workflow, supported formats table, troubleshooting, `.env` variable reference
-- [ ] 12.5 Commit Phase 12: "feat: error handling, edge cases, frontend component tests, and README documentation"
+- [x] 12.1 (T056) Backend: HTTP 422 for unsupported format, HTTP 413 for oversized files, HTTP 503 SSE error event when Ollama unreachable
+- [x] 12.2 (T056) Frontend: toast on upload failure (format, size, server error), toast on chat error, "Backend unavailable" banner, chat disabled with tooltip when 0 documents indexed
+- [x] 12.3 (T057) Create `tests/frontend/components/MessageBubble.test.tsx` with `@testing-library/react`: user bubble alignment, Markdown rendering, citation badge click → popover, `SourcesPanel` count, streaming cursor
+- [x] 12.4 (T058) Create `README.md`: what it is, requirements, first-time setup, session workflow, supported formats table, troubleshooting, `.env` variable reference
+- [x] 12.5 Commit Phase 12: "feat: error handling, edge cases, frontend component tests, and README documentation"

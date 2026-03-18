@@ -5,6 +5,7 @@ import json
 import logging
 from typing import Dict, List
 
+import httpx
 from fastapi import APIRouter
 from fastapi.responses import StreamingResponse
 from langchain_core.messages import AIMessage, HumanMessage
@@ -103,10 +104,33 @@ async def _run_agent_stream(session_id: str, message: str):
         yield _sse({"type": "error", "text": str(exc)})
 
 
+async def _check_ollama_reachable() -> bool:
+    """Return True if the Ollama service responds to a health probe."""
+    import os
+
+    ollama_host = os.getenv("OLLAMA_HOST", "http://ollama:11434")
+    try:
+        async with httpx.AsyncClient(timeout=5) as probe:
+            resp = await probe.get(f"{ollama_host}/api/tags")
+            return resp.status_code == 200
+    except Exception:
+        return False
+
+
 @router.post("/chat/stream")
 async def chat_stream(request: ChatRequest):
     session_id = request.session_id
     message = request.message
+
+    # Guard: return 503 immediately if Ollama is unreachable
+    if not await _check_ollama_reachable():
+        from fastapi import Response
+        from fastapi.responses import JSONResponse
+
+        return JSONResponse(
+            status_code=503,
+            content={"detail": "AI models are not available. Please wait for Ollama to finish loading."},
+        )
 
     async def event_generator():
         async for event in _run_agent_stream(session_id, message):
