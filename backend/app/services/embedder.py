@@ -21,7 +21,7 @@ class EmbeddingService:
         if self._model is None:
             logger.info("Loading nomic-embed-text embedding model (first call)...")
             from fastembed import TextEmbedding
-            self._model = TextEmbedding(model_name="nomic-embed-text")
+            self._model = TextEmbedding(model_name="nomic-ai/nomic-embed-text-v1.5")
             logger.info("Embedding model loaded and cached.")
         return self._model
 

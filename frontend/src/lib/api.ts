@@ -1,10 +1,5 @@
-import type {
-  Document,
-  DocumentListResponse,
-  HealthResponse,
-  SSEEvent,
-  UploadResponse,
-} from "@/types/chat";
+import type { Document, DocumentListResponse, UploadResponse } from "@/types/document";
+import type { HealthResponse, SSEEvent } from "@/types/chat";
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";

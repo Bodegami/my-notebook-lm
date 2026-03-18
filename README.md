@@ -39,18 +39,23 @@ git clone <repo-url> && cd <repo-dir>
 # 2. Copy environment template
 cp .env.example .env
 
-# 3. Start all services (downloads AI models on first run — needs internet)
-docker-compose up -d
+# 3. Generate the frontend lock file (required for Docker build)
+cd frontend && npm install && cd ..
 
-# 4. Watch model download progress (~2–4 GB total)
-docker-compose logs -f ollama
+# 4. Build and start all services (downloads AI models on first run — needs internet)
+docker compose up --build -d
 
-# 5. Once models are ready, open the app
+# 5. Watch LLM model download progress (~2–4 GB total)
+docker compose logs -f ollama
+
+# 6. Once models are ready, open the app
 open http://localhost:3000   # macOS
 # Or visit http://localhost:3000 in your browser
 ```
 
 The header indicator will turn green ("Models Ready") when the system is ready for use.
+
+> **Note:** The first document upload triggers an embedding model download (~270 MB via fastembed). This happens once and is cached automatically.
 
 ---
 
@@ -58,20 +63,20 @@ The header indicator will turn green ("Models Ready") when the system is ready f
 
 ### Start a study session
 ```bash
-docker-compose up -d
+docker compose up -d
 # Open http://localhost:3000 → upload books → start chatting
 ```
 
 ### Stop without losing data (books stay indexed)
 ```bash
-docker-compose stop
-# Resume later with: docker-compose start
+docker compose stop
+# Resume later with: docker compose start
 ```
 
 ### Reset for a fresh session (clears all books and vectors)
 ```bash
-docker-compose down -v   # removes all volumes
-docker-compose up -d     # starts fresh
+docker compose down -v   # removes all volumes
+docker compose up -d     # starts fresh
 ```
 
 ---
@@ -93,9 +98,9 @@ docker-compose up -d     # starts fresh
 ## Troubleshooting
 
 ### Ollama models not loading (yellow indicator)
-- Check container logs: `docker-compose logs -f ollama`
+- Check container logs: `docker compose logs -f ollama`
 - First startup downloads ~2–4 GB; wait for download to complete
-- If download stalled: `docker-compose restart ollama`
+- If download stalled: `docker compose restart ollama`
 
 ### PDF not indexing (error badge)
 - Verify the PDF has a text layer (open it and try selecting text)
@@ -108,8 +113,8 @@ docker-compose up -d     # starts fresh
 - Ensure no other memory-intensive applications are running
 
 ### Backend unavailable banner
-- Run `docker-compose ps` to verify all containers are running
-- Check logs: `docker-compose logs backend`
+- Run `docker compose ps` to verify all containers are running
+- Check logs: `docker compose logs backend`
 
 ---
 
@@ -120,7 +125,7 @@ All settings live in `.env` (copied from `.env.example`):
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `OLLAMA_HOST` | `http://ollama:11434` | Ollama service URL (internal) |
-| `LLM_MODEL` | `phi3.5:mini-instruct` | Chat LLM model name |
+| `LLM_MODEL` | `phi3.5` | Chat LLM model name (must be a valid Ollama tag) |
 | `EMBED_MODEL` | `nomic-embed-text` | Embedding model name |
 | `OLLAMA_NUM_GPU` | `1` | GPU layers to offload (0 = CPU only) |
 | `QDRANT_HOST` | `http://qdrant:6333` | Qdrant service URL (internal) |

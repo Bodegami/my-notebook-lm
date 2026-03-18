@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 import json
 import logging
 import os
@@ -56,15 +57,16 @@ async def ingest_document(
     4. index    → upload to Qdrant, store point IDs
     """
     try:
-        # Step 1: Extract
+        # Step 1: Extract (CPU-bound — run in thread)
         _update_status(db_session, document_id, "extracting")
         extractor = ExtractorFactory.get_extractor(filename)
-        extraction_result = extractor.extract(file_path)
+        extraction_result = await asyncio.to_thread(extractor.extract, file_path)
         logger.info(f"Extracted {len(extraction_result.chunks)} sections from {filename}")
 
-        # Step 2: Chunk
+        # Step 2: Chunk (CPU-bound — run in thread)
         _update_status(db_session, document_id, "chunking")
-        chunks = chunk_document(
+        chunks = await asyncio.to_thread(
+            chunk_document,
             extraction_result,
             document_id=document_id,
             filename=filename,
@@ -74,9 +76,9 @@ async def ingest_document(
         )
         logger.info(f"Created {len(chunks)} chunks for {filename}")
 
-        # Step 3 & 4: Embed + Index
+        # Step 3 & 4: Embed + Index (CPU-bound — run in thread)
         _update_status(db_session, document_id, "embedding")
-        point_ids = index_chunks(chunks)
+        point_ids = await asyncio.to_thread(index_chunks, chunks)
         logger.info(f"Indexed {len(point_ids)} points in Qdrant for {filename}")
 
         # Mark as indexed
