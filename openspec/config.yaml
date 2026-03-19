@@ -1,0 +1,41 @@
+schema: spec-driven
+
+context: |
+  Project: my-notebook-lm — A fully local, privacy-first document intelligence system.
+  A personal NotebookLM alternative that runs entirely inside Docker with no cloud APIs.
+
+  Tech Stack:
+    Frontend: Next.js 14 (App Router), TypeScript, Tailwind CSS, Radix UI, Framer Motion
+    Backend: Python 3.11, FastAPI, LangGraph (ReAct agent), SQLModel, SQLite
+    Vector DB: Qdrant (dense cosine + BM25 sparse hybrid search with RRF fusion)
+    Embeddings: fastembed (nomic-ai/nomic-embed-text-v1.5, CPU-based, runs in backend container)
+    LLM: Ollama (default model: phi3.5, runs in dedicated container with optional GPU offload)
+    Orchestration: Docker Compose (services: frontend, backend, ollama, qdrant)
+
+  Architecture:
+    - RAG pipeline with LangGraph agent nodes: classifier → retriever → evaluator → rewriter → generator
+    - Parent-child chunking strategy: child chunks for retrieval, parent chunks as LLM context
+    - SSE (Server-Sent Events) for real-time streaming chat responses
+    - Document ingestion pipeline: extract → chunk → embed → index (runs as async background task)
+    - All ingestion CPU-bound work wrapped in asyncio.to_thread to avoid blocking the event loop
+
+  Supported file formats: PDF, EPUB, DOCX, DOC, Markdown, plain text
+
+  Coding Standards:
+    - Python: async/await throughout, type hints, conventional commits
+    - TypeScript: strict mode, functional components, custom hooks for state/side effects
+    - No cloud dependencies — all inference is local
+
+rules:
+  proposal:
+    - "Proposals must include a clear Non-goals section to prevent scope creep."
+    - "Always describe the user-facing benefit, not just the technical implementation."
+  specs:
+    - "Each spec must describe a single user-facing capability with clear acceptance criteria."
+    - "Specs must specify whether the feature impacts the ingestion pipeline, the agent, or the UI."
+    - "Privacy and local-only constraints must be preserved — no external API calls."
+  tasks:
+    - "Tasks must be granular and take no more than 4 hours each."
+    - "Backend tasks must note if they involve async code or blocking I/O."
+    - "Frontend tasks must specify whether they affect state, UI, or API integration."
+    - "Each task must be independently testable."

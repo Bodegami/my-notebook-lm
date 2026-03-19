@@ -1,0 +1,13 @@
+Clean Code by Robert C. Martin
+
+This book covers the principles and practices of writing clean code.
+Clean code reads like well-written prose. It is focused, expressive, and minimal.
+
+The author presents numerous examples showing how to transform messy code
+into clean code through refactoring. Each chapter covers a different aspect
+of code quality including naming, functions, comments, formatting, objects,
+error handling, and unit tests.
+
+The book argues that writing clean code is both an art and a craft that
+requires discipline and continuous practice. The rules presented are not
+absolute but provide a framework for thinking about code quality.
